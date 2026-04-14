@@ -2,7 +2,10 @@ import { useParams } from "react-router";
 import { use } from "react";
 import callImg from "../assets/call.png";
 import textImg from "../assets/text.png";
-import vedioImg from "../assets/video.png"
+import videoImg from "../assets/video.png";
+import BellImg from "../assets/BellSimpleZ.png";
+import ArchiveImg from "../assets/Archive.png" ;
+import TrashImg from "../assets/Trash.png" ;
 
 const friendsPromise = fetch("/friendsdata.json").then((res) => res.json());
 
@@ -16,8 +19,8 @@ const FriendDetails = () => {
 
   return (
     <>
-        <div className="container mx-auto w-[80%] grid grid-cols-3 gap-3">
-            <div className="left border border-amber-500  grid grid-cols-1 grid-rows-3 gap-3 h-full">
+        <div className="container mx-auto w-[80%] grid grid-cols-3 gap-3 mt-20 mb-20">
+            <div className="left   grid grid-cols-1 grid-rows-3 gap-3 h-full">
                 <div className="   row-span-2 p-4 shadow-sm ">
                     {/* l-1 */}
                     <div className="card  bg-[#FFFFFF] flex items-center text-center justify-center">
@@ -50,24 +53,39 @@ const FriendDetails = () => {
                                 </div>
                             </div>
                 </div>
-                <div className="border border-amber-300   gird  grid-rows-3  gap-3">
-                    <div className="border border-amber-200 mb-2 font-medium p-4 text-center shadow-sm ">
+                <div className="  gird  grid-rows-3  gap-3">
+                    <div className=" mb-2 font-medium p-4 text-center shadow-sm ">
                         {/* l-2-1 */}
-                        Snooze 2 weeks
+                        <div className="flex justify-center items-center gap-4">
+                            <img src={BellImg} alt="" />
+                            <p>Snooze 2 weeks</p>
+                        
+                        </div>
+                        
                     </div >
-                    <div className="border border-amber-200 mb-2 font-medium p-4 text-center shadow-sm ">
+                    <div className=" mb-2 font-medium p-4 text-center shadow-sm ">
                         {/* l-2-2 */}
-                        Archive
+                        <div className="flex justify-center items-center gap-4">
+                            <img src={ArchiveImg} alt="" />
+                            <p>Archive</p>
+                        </div>
+                        
+                        
                     </div>
-                    <div className="border border-amber-200 text-[#EF4444] font-medium p-4 text-center shadow-sm">
+                    <div className=" text-[#EF4444] font-medium p-4 text-center shadow-sm">
                         {/* l-2-3 */}
-                        Delete
+                        <div className="flex justify-center items-center gap-4">
+                            <img src={TrashImg} alt="" />
+                            <p> Delete</p>
+                        </div>
+                        
+                       
                     </div>
                 </div>
             </div>
-            <div className="right col-span-2 border border-amber-500   grid grid-cols-1 grid-rows-3 gap-3">
-                <div className="border border-amber-300   grid grid-cols-3 gap-3">
-                    <div className="border border-amber-200 shadow-sm  ">
+            <div className="right col-span-2    grid grid-cols-1 grid-rows-3 gap-3">
+                <div className="   grid grid-cols-3 gap-3">
+                    <div className=" shadow-sm  ">
                         {/* r-1-1 */}
                         <div className="card  bg-base-100  p-4">
                         <div className="card-body items-center text-center">
@@ -77,7 +95,7 @@ const FriendDetails = () => {
                         </div>
                     </div>
                     </div>
-                    <div className="border border-amber-200 shadow-sm">
+                    <div className=" shadow-sm">
                         {/* 1-1-2 */}
                         <div className="card  bg-base-100   p-4">
                         <div className="card-body items-center text-center">
@@ -87,7 +105,7 @@ const FriendDetails = () => {
                         </div>
                     </div>
                     </div>
-                    <div className="border border-amber-200 shadow-sm">
+                    <div className=" shadow-sm">
                         {/* r-1-3 */}
                         <div className="card  bg-base-100   p-4">
                         <div className="card-body items-center text-center">
@@ -98,35 +116,35 @@ const FriendDetails = () => {
                     </div>
                     </div>
                 </div>
-                <div className="border border-amber-300 shadow-sm">
+                <div className=" shadow-sm">
                     {/* r-2 */}
                     <div className="p-4">
-                        <div className="flex justify-between items-center mb-4">
-                            <h2 className="card-title">Relationship Goal</h2>
+                        <div className="flex justify-between items-center mb-4 mt-7">
+                            <h2 className="card-title text-[20px]">Relationship Goal</h2>
                             <button className="btn btn-xs">Edit</button>
                         </div>
-                        <div>
-                            Connect every {expectedFriend.goal} days
+                        <div className="text-[18px]">
+                            <span className="text-[#64748B]">Connect every</span > <span className="font-semibold">{expectedFriend.goal} days</span>
                         </div>
                     </div>
                     
                 </div>
-                <div className="border border-amber-300">
+                <div className=" shadow-sm">
                     {/* r-3 */}
-                    <div >
-                        <h2>Quick Check-In</h2>
+                    <div className="p-4">
+                        <h2 className="font-medium text-[20px] mb-3">Quick Check-In</h2>
                         <div className="flex justify-around items-center gap-6 ">
                             <div className="shadow-sm py-6 px-20">
                                 <img src={callImg} alt="" />
-                                <p>Call</p>
+                                <p className="font-semibold">Call</p>
                             </div>
                             <div className="shadow-sm py-6 px-20">
                                 <img src={textImg} alt="" />
-                                <p>Text</p>
+                                <p className="font-semibold">Text</p>
                             </div>
                             <div className="shadow-sm  py-6 px-20">
-                                <img src={vedioImg} alt="" />
-                                <p>Vedio</p>
+                                <img src={videoImg} alt="" />
+                                <p className="font-semibold">Video</p>
                             </div>
                         </div>
                     </div>

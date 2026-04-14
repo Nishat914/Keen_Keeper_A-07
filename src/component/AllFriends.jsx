@@ -8,7 +8,7 @@ const AllFriends = () => {
     return(
         <>
             <h2 className="container mx-auto w-[80%] font-bold text-2xl mb-6">Your Friends</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  gap-3 container mx-auto w-[80%]">
+            <div className="mb-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  gap-3 container mx-auto w-[80%]">
                 {friends.map((friend) => {
                     return (
                         <Link to={`/frienddetails/${friend.id}` } key={friend.id}>
