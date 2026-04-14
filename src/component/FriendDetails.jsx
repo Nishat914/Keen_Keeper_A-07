@@ -1,5 +1,8 @@
 import { useParams } from "react-router";
 import { use } from "react";
+import callImg from "../assets/call.png";
+import textImg from "../assets/text.png";
+import vedioImg from "../assets/video.png"
 
 const friendsPromise = fetch("/friendsdata.json").then((res) => res.json());
 
@@ -14,39 +17,119 @@ const FriendDetails = () => {
   return (
     <>
         <div className="container mx-auto w-[80%] grid grid-cols-3 gap-3">
-            <div className="left border border-amber-500  grid grid-cols-1 grid-rows-3 gap-3">
-                <div className="border border-amber-300   row-span-2">
-                    l-1
+            <div className="left border border-amber-500  grid grid-cols-1 grid-rows-3 gap-3 h-full">
+                <div className="   row-span-2 p-4 shadow-sm ">
+                    {/* l-1 */}
+                    <div className="card  bg-[#FFFFFF] flex items-center text-center justify-center">
+                                <figure >
+                                    <img
+                                        src={expectedFriend.picture}
+                                        alt=""  className="w-24 h-24 rounded-full object-cover"/>
+                                </figure>
+                                <div className="card-body flex justify-center items-center">
+                                    <h2 className="font-bold text-[20px]">
+                                        {expectedFriend.name}
+                                        
+                                    </h2>
+                                    
+
+                                    <div className={`badge font-medium text-[12px] ${(expectedFriend.status) === "overdue" ? 'bg-[#EF4444] text-white' : expectedFriend.status === "on-track" ? 'bg-[#244D3F] text-white' : 'bg-[#EFAD44] text-white'}`}>{expectedFriend.status}</div>
+
+                                    <div className="card-actions justify-end">
+                                        {(expectedFriend.tags).map((tag ,index) => {
+                                            return (
+                                                <div key={index} className="badge font-medium text-[12px] bg-[#CBFADB]">{tag}</div>
+                                            )
+                                        })}
+                                        
+                                        
+                                    </div>
+
+                                    <p className="text-[#64748B] text-[16px] italic font-medium">"{expectedFriend.bio}"</p>
+                                    <p className="text-[#64748B] text-[14px] ">Preferred: email</p>
+                                </div>
+                            </div>
                 </div>
                 <div className="border border-amber-300   gird  grid-rows-3  gap-3">
-                    <div className="border border-amber-200 mb-2 ">
-                        l-2-1
+                    <div className="border border-amber-200 mb-2 font-medium p-4 text-center shadow-sm ">
+                        {/* l-2-1 */}
+                        Snooze 2 weeks
                     </div >
-                    <div className="border border-amber-200 mb-2 ">
-                        l-2-2
+                    <div className="border border-amber-200 mb-2 font-medium p-4 text-center shadow-sm ">
+                        {/* l-2-2 */}
+                        Archive
                     </div>
-                    <div className="border border-amber-200  ">
-                        l-2-3
+                    <div className="border border-amber-200 text-[#EF4444] font-medium p-4 text-center shadow-sm">
+                        {/* l-2-3 */}
+                        Delete
                     </div>
                 </div>
             </div>
             <div className="right col-span-2 border border-amber-500   grid grid-cols-1 grid-rows-3 gap-3">
                 <div className="border border-amber-300   grid grid-cols-3 gap-3">
-                    <div className="border border-amber-200  ">
-                        r-1-1
+                    <div className="border border-amber-200 shadow-sm  ">
+                        {/* r-1-1 */}
+                        <div className="card  bg-base-100  p-4">
+                        <div className="card-body items-center text-center">
+                            <h2 className="card-title text-[#244D3F] font-semibold text-[32px]">{expectedFriend.days_since_contact}</h2>
+                            <p className="text-[#64748B] text-[18px]">Days Since Contact</p>
+                            
+                        </div>
                     </div>
-                    <div className="border border-amber-200">
-                        1-1-2
                     </div>
-                    <div className="border border-amber-200">
-                        r-1-3
+                    <div className="border border-amber-200 shadow-sm">
+                        {/* 1-1-2 */}
+                        <div className="card  bg-base-100   p-4">
+                        <div className="card-body items-center text-center">
+                            <h2 className="card-title text-[#244D3F] font-semibold text-[32px]">{expectedFriend.goal}</h2>
+                            <p className="text-[#64748B] text-[18px]">Goal (Days)</p>
+                            
+                        </div>
+                    </div>
+                    </div>
+                    <div className="border border-amber-200 shadow-sm">
+                        {/* r-1-3 */}
+                        <div className="card  bg-base-100   p-4">
+                        <div className="card-body items-center text-center">
+                            <h2 className="card-title text-[#244D3F] font-semibold text-[32px]">{expectedFriend.next_due_date}</h2>
+                            <p className="text-[#64748B] text-[18px]">Next Due</p>
+                            
+                        </div>
+                    </div>
                     </div>
                 </div>
-                <div className="border border-amber-300 ">
-                    r-2
+                <div className="border border-amber-300 shadow-sm">
+                    {/* r-2 */}
+                    <div className="p-4">
+                        <div className="flex justify-between items-center mb-4">
+                            <h2 className="card-title">Relationship Goal</h2>
+                            <button className="btn btn-xs">Edit</button>
+                        </div>
+                        <div>
+                            Connect every {expectedFriend.goal} days
+                        </div>
+                    </div>
+                    
                 </div>
                 <div className="border border-amber-300">
-                    r-3
+                    {/* r-3 */}
+                    <div >
+                        <h2>Quick Check-In</h2>
+                        <div className="flex justify-around items-center gap-6 ">
+                            <div className="shadow-sm py-6 px-20">
+                                <img src={callImg} alt="" />
+                                <p>Call</p>
+                            </div>
+                            <div className="shadow-sm py-6 px-20">
+                                <img src={textImg} alt="" />
+                                <p>Text</p>
+                            </div>
+                            <div className="shadow-sm  py-6 px-20">
+                                <img src={vedioImg} alt="" />
+                                <p>Vedio</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
