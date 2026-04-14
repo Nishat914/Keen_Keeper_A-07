@@ -26,7 +26,7 @@ const Navbar = () => {
     )
     return(
         <>
-            <div className="navbar bg-base-100 shadow-sm">
+            <div className="navbar bg-base-100 shadow-sm flex flex-col md:flex-row">
                 <div className="flex-1">
                     <a className="btn btn-ghost text-xl"><img src={logoImg} alt="" /></a>
                 </div>
