@@ -8,6 +8,7 @@ import HomePage from './component/HomePage';
 import Timeline from './component/Timeline';
 import Stats from './component/Stats';
 import ErrorPage from './component/ErrorPage';
+import FriendDetails from './component/FriendDetails';
 
 const router = createBrowserRouter([
   {
@@ -16,7 +17,7 @@ const router = createBrowserRouter([
     children: [
       { 
         index: true, 
-        Component: HomePage
+        Component: HomePage 
       },
       { 
         path: "/timeline", 
@@ -25,7 +26,11 @@ const router = createBrowserRouter([
       { 
         path: "/stats", 
         Component: Stats 
-      }
+      },
+      {
+            path: "/friendDetails/:id", 
+            Component: FriendDetails
+          }
     ],
     errorElement : <ErrorPage/> ,
   },

@@ -1,4 +1,6 @@
 import { use } from "react";
+import { Link } from "react-router";
+
 const friendsPromise = fetch('/friendsdata.json') . then ((res) => res.json());
 const AllFriends = () => {
     const friends = use(friendsPromise);
@@ -9,7 +11,7 @@ const AllFriends = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  gap-3 container mx-auto w-[80%]">
                 {friends.map((friend) => {
                     return (
-                        <div>
+                        <Link to={`/frienddetails/${friend.id}` } key={friend.id}>
                             <div className="card bg-base-100  shadow-sm flex items-center text-center justify-center">
                                 <figure >
                                     <img
@@ -23,9 +25,9 @@ const AllFriends = () => {
                                     </h2>
                                     <p className="text-[#64748B] text-[12px]">{friend.days_since_contact}d ago</p>
                                     <div className="card-actions justify-end">
-                                        {(friend.tags).map((tag) => {
+                                        {(friend.tags).map((tag ,index) => {
                                             return (
-                                                <div className="badge font-medium text-[12px] bg-[#CBFADB]">{tag}</div>
+                                                <div key={index} className="badge font-medium text-[12px] bg-[#CBFADB]">{tag}</div>
                                             )
                                         })}
                                         
@@ -34,7 +36,7 @@ const AllFriends = () => {
                                     <div className={`badge font-medium text-[12px] ${(friend.status) === "overdue" ? 'bg-[#EF4444] text-white' : friend.status === "on-track" ? 'bg-[#244D3F] text-white' : 'bg-[#EFAD44] text-white'}`}>{friend.status}</div>
                                 </div>
                             </div>
-                         </div>
+                         </Link>
                     )
                 })}
             </div>
