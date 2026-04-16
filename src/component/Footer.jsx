@@ -3,7 +3,7 @@ import facebook from '../assets/facebook.png'
 import twitter from '../assets/twitter.png'
 const Footer = () => {
   return (
-    <footer className="bg-[#244D3F] text-gray-400  p-16">
+    <footer className="bg-[#244D3F] text-gray-400  p-16 ">
         <div className='flex flex-col  justify-center items-center text-center'>
             <div>
                 <h2 className="text-white text-5xl font-bold">KeenKeeper</h2>

@@ -6,6 +6,8 @@ import videoImg from "../assets/video.png";
 import BellImg from "../assets/BellSimpleZ.png";
 import ArchiveImg from "../assets/Archive.png" ;
 import TrashImg from "../assets/Trash.png" ;
+import { FriendContext } from "./FriendContextProvider";
+import { useContext } from "react";
 
 const friendsPromise = fetch("/friendsdata.json").then((res) => res.json());
 
@@ -15,11 +17,14 @@ const FriendDetails = () => {
 
   const expectedFriend = friends.find((friend) => friend.id == id);
 
-  
-
+  const {handleMarksAsClick , storedFriends} = useContext(FriendContext);
+    console.log(handleMarksAsClick , storedFriends);
+    // const data = useContext(FriendContext);
+    // console.log(data);
+    // console.log(data.storedFriends)
   return (
     <>
-        <div className="container mx-auto w-[80%] grid grid-cols-3 gap-3 mt-20 mb-20">
+        <div className="container mx-auto w-[80%] grid grid-cols-1 lg:grid-cols-3 gap-3 mt-20 mb-20">
             <div className="left   grid grid-cols-1 grid-rows-3 gap-3 h-full">
                 <div className="   row-span-2 p-4 shadow-sm ">
                     {/* l-1 */}
@@ -133,16 +138,16 @@ const FriendDetails = () => {
                     {/* r-3 */}
                     <div className="p-4">
                         <h2 className="font-medium text-[20px] mb-3">Quick Check-In</h2>
-                        <div className="flex justify-around items-center gap-6 ">
-                            <div className="shadow-sm py-6 px-20">
+                        <div className="flex flex-wrap lg:flex-nowrap    justify-around items-center gap-6 ">
+                            <div onClick={() => handleMarksAsClick(expectedFriend , "call", callImg) } className="shadow-sm py-6 px-12">
                                 <img src={callImg} alt="" />
                                 <p className="font-semibold">Call</p>
                             </div>
-                            <div className="shadow-sm py-6 px-20">
+                            <div onClick={() => handleMarksAsClick(expectedFriend, "text", textImg)} className="shadow-sm py-6 px-12">
                                 <img src={textImg} alt="" />
                                 <p className="font-semibold">Text</p>
                             </div>
-                            <div className="shadow-sm  py-6 px-20">
+                            <div onClick={() => handleMarksAsClick(expectedFriend, "video", videoImg)} className="shadow-sm  py-6 px-12">
                                 <img src={videoImg} alt="" />
                                 <p className="font-semibold">Video</p>
                             </div>

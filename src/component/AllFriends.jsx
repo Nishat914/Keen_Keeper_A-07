@@ -1,10 +1,34 @@
 import { use } from "react";
 import { Link } from "react-router";
+import { useState } from "react";
+import { useEffect } from "react";
+import { BeatLoader } from "react-spinners";
 
-const friendsPromise = fetch('/friendsdata.json') . then ((res) => res.json());
+
+
+
 const AllFriends = () => {
-    const friends = use(friendsPromise);
-    console.log(friends);
+    const [friends, setFriends] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        fetch('/friendsdata.json')
+            .then(res => res.json())
+            .then(data => {
+                setFriends(data);
+                setLoading(false);
+            })
+    }, []);
+
+    if (loading) {
+        return (
+            <div className="flex justify-center items-center">
+                <BeatLoader color="#244D3F" />
+             </div>
+        )
+        
+    }
+
     return(
         <>
             <h2 className="container mx-auto w-[80%] font-bold text-2xl mb-6">Your Friends</h2>

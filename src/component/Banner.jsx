@@ -14,14 +14,14 @@ const Banner = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 mt-10">
                     <div className="card  bg-base-100 shadow-sm  p-4">
                         <div className="card-body items-center text-center">
-                            <h2 className="card-title text-[#244D3F] font-semibold text-[32px]">10</h2>
+                            <h2 className="card-title text-[#244D3F] font-semibold text-[32px]">12</h2>
                             <p className="text-[#64748B] text-[18px]">Total Freiends</p>
                             
                         </div>
                     </div>
                     <div className="card  bg-base-100 shadow-sm  p-4">
                         <div className="card-body items-center text-center">
-                            <h2 className="card-title text-[#244D3F] font-semibold text-[32px]">3</h2>
+                            <h2 className="card-title text-[#244D3F] font-semibold text-[32px]">4</h2>
                             <p className="text-[#64748B] text-[18px]">On Track</p>
                             
                         </div>

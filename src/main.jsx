@@ -10,6 +10,8 @@ import Stats from './component/Stats';
 import ErrorPage from './component/ErrorPage';
 import FriendDetails from './component/FriendDetails';
 
+import FriendContextProvider from './component/FriendContextProvider';
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -40,7 +42,10 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-   <RouterProvider router={router} />,
+    <FriendContextProvider>
+        <RouterProvider router={router} />,
     
+    </FriendContextProvider>
+   
   </StrictMode>,
 )
