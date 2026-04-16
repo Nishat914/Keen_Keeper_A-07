@@ -5,8 +5,8 @@ const Timeline = () => {
     const { storedFriends } = useContext(FriendContext);
     
     return(
-        <div className="w-[80%] mx-auto mt-12 mb-12">
-            <h1 className="text-5xl font-bold mb-5">Timeline</h1>
+        <div className="w-[80%] mx-auto mt-12 mb-12 ">
+            <h1 className="text-5xl font-bold mb-5 text-[#244D3F]">Timeline</h1>
            
 
             {
