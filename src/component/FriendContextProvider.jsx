@@ -1,11 +1,25 @@
 
 import { createContext } from "react"
 import { useState } from "react";
-
+import { toast } from "react-toastify";
 export const FriendContext = createContext();
 
 const FriendContextProvider = ({children}) => {
     const [storedFriends , setStoredFriends] = useState([]);
+
+    const handleActionClick = (currentFriend , actionType, actionImg) => {
+        if (actionType === 'call'){
+            toast.success(`Call with ${currentFriend.name}`)
+        }
+        if (actionType === 'text'){
+            toast.success(`Text with ${currentFriend.name}`)
+        }
+        if (actionType === 'video'){
+            toast.success(`Video  with ${currentFriend.name}`)
+        }
+
+        handleMarksAsClick(currentFriend , actionType, actionImg);
+    }
 
     const handleMarksAsClick = (currentFriend , actionType, actionImg) => {
         
@@ -30,7 +44,8 @@ const FriendContextProvider = ({children}) => {
         
         setStoredFriends ,
         storedFriends ,
-        handleMarksAsClick
+        handleMarksAsClick ,
+        handleActionClick
     }
     return (
         <FriendContext.Provider value={data}>

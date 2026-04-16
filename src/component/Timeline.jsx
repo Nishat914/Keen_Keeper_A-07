@@ -3,13 +3,21 @@ import { FriendContext } from "./FriendContextProvider";
 
 const Timeline = () => {
     const { storedFriends } = useContext(FriendContext);
-
+    
     return(
         <div className="w-[80%] mx-auto mt-12 mb-12">
             <h1 className="text-5xl font-bold mb-5">Timeline</h1>
+           
 
             {
-                storedFriends.map((item, index) => (
+                storedFriends.length === 0 ? (
+                    <div className="w-[80%] mx-auto mt-12 mb-12 flex flex-col justify-center items-center gap-4 p-20 shadow  rounded">
+                        <h2 className="text-5xl font-bold mb-5 text-[#244D3F]">No activity yet</h2>
+                        <p className="text-sm text-gray-500">Start by calling,texting or video chatting!</p>
+                    </div>
+                ) :
+                (
+                    storedFriends.map((item, index) => (
                     <div key={index} className="flex items-center gap-4 p-4 shadow mb-3 rounded">
                         
                         
@@ -23,6 +31,7 @@ const Timeline = () => {
 
                     </div>
                 ))
+                )
             }
         </div>
     )

@@ -34,8 +34,8 @@ const router = createBrowserRouter([
             Component: FriendDetails
           }
     ],
-    errorElement : <ErrorPage/> ,
-  },
+    errorElement : <ErrorPage/> 
+  }
 ]);
 
 
@@ -43,7 +43,7 @@ const router = createBrowserRouter([
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <FriendContextProvider>
-        <RouterProvider router={router} />,
+        <RouterProvider router={router} />
     
     </FriendContextProvider>
    

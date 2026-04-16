@@ -14,11 +14,12 @@ const friendsPromise = fetch("/friendsdata.json").then((res) => res.json());
 const FriendDetails = () => {
   const { id } = useParams();
   const friends = use(friendsPromise);
+  
 
   const expectedFriend = friends.find((friend) => friend.id == id);
 
-  const {handleMarksAsClick , storedFriends} = useContext(FriendContext);
-    console.log(handleMarksAsClick , storedFriends);
+  const {handleActionClick , storedFriends} = useContext(FriendContext);
+    console.log(handleActionClick , storedFriends);
     // const data = useContext(FriendContext);
     // console.log(data);
     // console.log(data.storedFriends)
@@ -139,15 +140,15 @@ const FriendDetails = () => {
                     <div className="p-4">
                         <h2 className="font-medium text-[20px] mb-3">Quick Check-In</h2>
                         <div className="flex flex-wrap lg:flex-nowrap    justify-around items-center gap-6 ">
-                            <div onClick={() => handleMarksAsClick(expectedFriend , "call", callImg) } className="shadow-sm py-6 px-12">
+                            <div onClick={() => handleActionClick(expectedFriend , "call", callImg) } className="shadow-sm py-6 px-12">
                                 <img src={callImg} alt="" />
                                 <p className="font-semibold">Call</p>
                             </div>
-                            <div onClick={() => handleMarksAsClick(expectedFriend, "text", textImg)} className="shadow-sm py-6 px-12">
+                            <div onClick={() => handleActionClick(expectedFriend, "text", textImg)} className="shadow-sm py-6 px-12">
                                 <img src={textImg} alt="" />
                                 <p className="font-semibold">Text</p>
                             </div>
-                            <div onClick={() => handleMarksAsClick(expectedFriend, "video", videoImg)} className="shadow-sm  py-6 px-12">
+                            <div onClick={() => handleActionClick(expectedFriend, "video", videoImg)} className="shadow-sm  py-6 px-12">
                                 <img src={videoImg} alt="" />
                                 <p className="font-semibold">Video</p>
                             </div>
