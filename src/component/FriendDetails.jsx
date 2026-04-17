@@ -26,10 +26,10 @@ const FriendDetails = () => {
   return (
     <>
         <div className="container mx-auto w-[80%] grid grid-cols-1 lg:grid-cols-3 gap-3 mt-20 mb-20">
-            <div className="left   grid grid-cols-1 grid-rows-3 gap-3 h-full">
+            <div className="left   grid grid-cols-1 grid-rows-3 gap-3 ">
                 <div className="   row-span-2 p-4 shadow-sm ">
                     {/* l-1 */}
-                    <div className="card  bg-[#FFFFFF] flex items-center text-center justify-center">
+                    <div className="card  bg-[#FFFFFF]  flex flex-col items-center text-center justify-center">
                                 <figure >
                                     <img
                                         src={expectedFriend.picture}
